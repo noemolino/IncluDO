@@ -1,15 +1,15 @@
-# 📚 IncluDO - Sistema di Formazione Professionale per Migranti
+# 📚 IncluDO - Vocational Training System for Migrants
 
-## 📚 Descrizione
-IncluDO è un progetto TypeScript che modella la struttura operativa di una scuola di formazione professionale dedicata a migranti e persone svantaggiate. Il sistema gestisce partecipanti, corsi di formazione e aziende partner, facilitando l'integrazione lavorativa e sociale.
+## 📚 Description
+IncluDO is a TypeScript project that models the operational structure of a vocational training school dedicated to migrants and disadvantaged individuals. The system manages participants, training courses, and partner companies, facilitating social and professional integration.
 
 ---
 
-## 🚀 Caratteristiche
-- Gestione dei partecipanti con informazioni personali e ambito di formazione.
-- Gestione dei corsi con dettagli, durata e lista iscritti.
-- Gestione delle aziende partner e delle posizioni lavorative offerte.
-- Logica di iscrizione ai corsi e offerta di posizioni lavorative.
+## 🚀 Features
+- Participant management with personal information and training background
+- Course management with details, duration, and enrolled participants
+- Partner company management and offered job positions
+- Logic for course enrollment and job offering
 
 ---
 
@@ -17,32 +17,32 @@ IncluDO è un progetto TypeScript che modella la struttura operativa di una scuo
 IncluDO/
 │
 ├── 📁 src/
-│ └── 📄 index.ts # Codice TypeScript principale
+│ └── 📄 index.ts # Main TypeScript code
 │
-├── 📁 dist/ # Output compilato (file JavaScript)
+├── 📁 dist/ # Compiled output (JavaScript files)
 │
-├── 📄 package.json # Configurazione npm e dipendenze
-├── 📄 tsconfig.json # Configurazione TypeScript
-└── 📄 README.md # Documentazione progetto
+├── 📄 package.json # npm configuration and dependencies
+├── 📄 tsconfig.json # TypeScript configuration
+└── 📄 README.md # Project documentation
 
 ---
 
-## ▶️ Demo Online
+## ▶️ Online Demo
 
-👉 [Provala qui](https://codepen.io/noemolino/pen/WbvEmqp?editors=1112)
+👉 [Try it here](https://codepen.io/noemolino/pen/WbvEmqp?editors=1112)
 
 ---
 
-## 🛠️ Prerequisiti
+## 🛠️ Prerequisites
 
-- Node.js e npm installati sul sistema
+- Node.js and npm installed on your system
 - TypeScript
 
 ---
 
-## ✅ Avvio in locale
+## ✅ Run Locally
 
-Clona il repository e installa le dipendenze:
+Clone the repository and install dependencies:
 
 ```bash
 git clone https://github.com/noemolino/IncluDO.git

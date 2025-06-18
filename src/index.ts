@@ -1,144 +1,145 @@
-// Interfacce
+// Interfaces
 
-interface IPartecipante {
-  nome: string;
-  cognome: string;
-  paeseOrigine: string;
-  livelloIstruzione: string;
-  competenzeLinguistiche: string[];
-  ambitoFormazione: string;
-  iscrivitiCorso(corso: ICorso): void;
+interface IParticipant {
+  firstName: string;
+  lastName: string;
+  countryOfOrigin: string;
+  educationLevel: string;
+  languageSkills: string[];
+  trainingField: string;
+  enrollInCourse(course: ICourse): void;
 }
 
-interface ICorso {
-  titolo: string;
-  descrizione: string;
-  settoreProfessionale: string;
-  durata: number;
-  iscritti: IPartecipante[];
-  aggiungiPartecipante(partecipante: IPartecipante): void;
+interface ICourse {
+  title: string;
+  description: string;
+  professionalSector: string;
+  duration: number;
+  enrolled: IParticipant[];
+  addParticipant(participant: IParticipant): void;
 }
 
-interface IAzienda {
-  nomeAzienda: string;
-  settoreAttivita: string;
-  descrizione: string;
-  posizioniAperte: string[];
-  offriPosizione(partecipante: IPartecipante, posizione: string): void;
+interface ICompany {
+  companyName: string;
+  businessSector: string;
+  description: string;
+  openPositions: string[];
+  offerPosition(participant: IParticipant, position: string): void;
 }
 
-// Implementazioni
+// Implementations
 
-class Partecipante implements IPartecipante {
+class Participant implements IParticipant {
   constructor(
-    public nome: string,
-    public cognome: string,
-    public paeseOrigine: string,
-    public livelloIstruzione: string,
-    public competenzeLinguistiche: string[],
-    public ambitoFormazione: string
+    public firstName: string,
+    public lastName: string,
+    public countryOfOrigin: string,
+    public educationLevel: string,
+    public languageSkills: string[],
+    public trainingField: string
   ) {}
 
-  iscrivitiCorso(corso: ICorso): void {
-    console.log(`${this.nome} si sta iscrivendo al corso ${corso.titolo}`);
-    corso.aggiungiPartecipante(this);
+  enrollInCourse(course: ICourse): void {
+    console.log(`${this.firstName} is enrolling in the course ${course.title}`);
+    course.addParticipant(this);
   }
 }
 
-class Corso implements ICorso {
-  iscritti: IPartecipante[] = [];
+class Course implements ICourse {
+  enrolled: IParticipant[] = [];
 
   constructor(
-    public titolo: string,
-    public descrizione: string,
-    public settoreProfessionale: string,
-    public durata: number
+    public title: string,
+    public description: string,
+    public professionalSector: string,
+    public duration: number
   ) {}
 
-  aggiungiPartecipante(partecipante: IPartecipante): void {
-    if (this.iscritti.includes(partecipante)) {
-      console.log(`${partecipante.nome} è già iscritto a ${this.titolo}`);
+  addParticipant(participant: IParticipant): void {
+    if (this.enrolled.includes(participant)) {
+      console.log(`${participant.firstName} is already enrolled in ${this.title}`);
       return;
     }
-    this.iscritti.push(partecipante);
-    console.log(`${partecipante.nome} è stato iscritto al corso ${this.titolo}`);
+    this.enrolled.push(participant);
+    console.log(`${participant.firstName} has been enrolled in the course ${this.title}`);
   }
 }
 
-class Azienda implements IAzienda {
+class Company implements ICompany {
   constructor(
-    public nomeAzienda: string,
-    public settoreAttivita: string,
-    public descrizione: string,
-    public posizioniAperte: string[]
+    public companyName: string,
+    public businessSector: string,
+    public description: string,
+    public openPositions: string[]
   ) {}
 
-  offriPosizione(partecipante: IPartecipante, posizione: string): void {
-    if (!this.posizioniAperte.includes(posizione)) {
-      console.log(`La posizione "${posizione}" non è disponibile in ${this.nomeAzienda}.`);
+  offerPosition(participant: IParticipant, position: string): void {
+    if (!this.openPositions.includes(position)) {
+      console.log(`The position "${position}" is not available at ${this.companyName}.`);
       return;
     }
     console.log(
-      `${this.nomeAzienda} offre a ${partecipante.nome} ${partecipante.cognome} la posizione di ${posizione}.`
+      `${this.companyName} offers ${participant.firstName} ${participant.lastName} the position of ${position}.`
     );
   }
 }
 
-// Partecipanti
+// Participants
 
-const partecipanteMarocchino = new Partecipante(
+const moroccanParticipant = new Participant(
   "Youssef",
   "El Amrani",
-  "Marocco",
-  "Diploma Agrario",
-  ["Arabo", "Francese", "Italiano"],
-  "Agricoltura"
+  "Morocco",
+  "Agricultural Diploma",
+  ["Arabic", "French", "Italian"],
+  "Agriculture"
 );
 
-const partecipanteIndiano = new Partecipante(
+const indianParticipant = new Participant(
   "Raj",
   "Patel",
   "India",
-  "Diploma Tecnico",
-  ["Hindi", "Inglese", "Italiano"],
-  "Costruzioni"
+  "Technical Diploma",
+  ["Hindi", "English", "Italian"],
+  "Construction"
 );
 
-// Corsi
+// Courses
 
-const corsoAgricoltura = new Corso(
-  "Tecniche di Agricoltura Sostenibile",
-  "Formazione pratica su tecniche agricole rispettose dell'ambiente.",
-  "Agricoltura",
+const agricultureCourse = new Course(
+  "Sustainable Agriculture Techniques",
+  "Practical training on environmentally friendly farming techniques.",
+  "Agriculture",
   10
 );
 
-const corsoCostruzioni = new Corso(
-  "Costruzioni Tradizionali in Muratura",
-  "Tecniche di base per lavorare nell’edilizia tradizionale.",
-  "Edilizia",
+const constructionCourse = new Course(
+  "Traditional Masonry Construction",
+  "Basic techniques for working in traditional construction.",
+  "Construction",
   14
 );
 
-// Aziende
+// Companies
 
-const aziendaAgricola = new Azienda(
-  "Fattoria Verde",
-  "Agricoltura",
-  "Azienda agricola biologica che coltiva ortaggi locali.",
-  ["Assistente agricolo", "Operatore campo"]
+const agriculturalCompany = new Company(
+  "Green Farm",
+  "Agriculture",
+  "Organic farm growing local vegetables.",
+  ["Agricultural Assistant", "Field Operator"]
 );
 
-const aziendaCostruzioni = new Azienda(
-  "Edilizia Solidale",
-  "Edilizia",
-  "Impresa che ristruttura edifici nei borghi storici.",
-  ["Manovale", "Apprendista muratore"]
+const constructionCompany = new Company(
+  "Solidarity Construction",
+  "Construction",
+  "Company renovating buildings in historic villages.",
+  ["Laborer", "Apprentice Mason"]
 );
 
-// Logica
+// Logic
 
-partecipanteMarocchino.iscrivitiCorso(corsoAgricoltura);
-partecipanteIndiano.iscrivitiCorso(corsoCostruzioni);
-aziendaAgricola.offriPosizione(partecipanteMarocchino, "Assistente agricolo");
-aziendaCostruzioni.offriPosizione(partecipanteIndiano, "Apprendista muratore");
+moroccanParticipant.enrollInCourse(agricultureCourse);
+indianParticipant.enrollInCourse(constructionCourse);
+
+agriculturalCompany.offerPosition(moroccanParticipant, "Agricultural Assistant");
+constructionCompany.offerPosition(indianParticipant, "Apprentice Mason");
